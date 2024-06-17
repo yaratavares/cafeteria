@@ -93,7 +93,7 @@
                         <p><?= $cafe['descricao']?></p>
                         <p><?= 'R$ ' . $cafe['preco']?></p>
                     </div>
-                <?php endforeach ?>
+                <?php endforeach; ?>
             </div>
         </section>
         <section class="container-almoco">
@@ -102,38 +102,16 @@
                 <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-almoco-produtos">
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/bife.jpg">
+                <?php foreach($produtosAlmoco as $almoco): ?>
+                    <div class="container-produto">
+                        <div class="container-foto">
+                            <img src=<?= $almoco['imagem']?>>
+                        </div>
+                        <p><?= $almoco['nome']?></p>
+                        <p><?= $almoco['descricao']?></p>
+                        <p><?= 'R$ '. $almoco['preco']?></p>
                     </div>
-                    <p>Bife</p>
-                    <p>Bife, arroz com feijão e uma deliciosa batata frita</p>
-                    <p>R$ 27.90</p>
-                </div>
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/prato-peixe.jpg">
-                    </div>
-                    <p>Filé de peixe</p>
-                    <p>Filé de peixe salmão assado, arroz, feijão verde e tomate.</p>
-                    <p>R$ 24.99</p>
-                </div>
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/prato-frango.jpg">
-                    </div>
-                    <p>Frango</p>
-                    <p>Saboroso frango à milanesa com batatas fritas, salada de repolho e molho picante</p>
-                    <p>R$ 23.00</p>
-                </div>
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/fettuccine.jpg">
-                    </div>
-                    <p>Fettuccine</p>
-                    <p>Prato italiano autêntico da massa do fettuccine com peito de frango grelhado</p>
-                    <p>R$ 22.50</p>
-                </div>
+                <?php endforeach; ?>
             </div>
 
         </section>

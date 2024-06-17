@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  cafeteria_db:
+    image: mysql
+    restart: always
+    networks:
+      - inbound
+    environment:
+      - MYSQL_DATABASE=cafeteria_db
+      - MYSQL_ROOT_PASSWORD=senha123
+    ports:
+      - "3306:3306"
+
+networks:
+  inbound:
