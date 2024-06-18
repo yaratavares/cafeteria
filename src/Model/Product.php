@@ -2,14 +2,14 @@
 
 class Product
 {
-    private int $id;
+    private ?int $id;
     private string $type;
     private string $name;
     private string $description;
     private string $image;
     private float $price;
 
-    public function __construct(int $id, string $type, string $name, string $description, string $image, float $price)
+    public function __construct(?int $id, string $type, string $name, string $description, float $price, string $image = "logo-serenatto.png")
     {
         $this->id = $id;
         $this->type =  $type;

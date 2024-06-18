@@ -6,7 +6,6 @@ require "src/Repository/ProductRepository.php";
 $productRepository = new ProductRepository($pdo);
 $products = $productRepository->getAll();
 
-
 ?>
 
 <!doctype html>
@@ -66,7 +65,7 @@ $products = $productRepository->getAll();
           <?php endforeach; ?>
         </tbody>
       </table>
-      <a class="botao-cadastrar" href="cadastrar-produto.html">Cadastrar produto</a>
+      <a class="botao-cadastrar" href="add-product.php">Cadastrar produto</a>
       <form action="#" method="post">
         <input type="submit" class="botao-cadastrar" value="Baixar Relatório" />
       </form>

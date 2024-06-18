@@ -48,7 +48,7 @@ class ProductRepository
     private function formatObject($product)
     {
         return
-            new Product($product['id'], $product['tipo'], $product['nome'], $product['descricao'], $product['imagem'], $product['preco']);
+            new Product($product['id'], $product['tipo'], $product['nome'], $product['descricao'], $product['preco'], $product['imagem']);
     }
 
     public function getAll()
@@ -73,6 +73,19 @@ class ProductRepository
         $sql = "DELETE FROM produtos WHERE id = ?";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(1, $id);
+        $statement->execute();
+    }
+
+    public function saveProduct(Product $product)
+    {
+        $sql = "INSERT INTO produtos (tipo, nome, descricao, preco, imagem) VALUES (?,?,?,?,?)";
+
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(1, $product->getType());
+        $statement->bindValue(2, $product->getName());
+        $statement->bindValue(3, $product->getDescription());
+        $statement->bindValue(4, $product->getPrice());
+        $statement->bindValue(5, $product->getImage());
         $statement->execute();
     }
 }
