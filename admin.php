@@ -53,7 +53,7 @@ $products = $productRepository->getAll();
               <td><?= $product->getType() ?></td>
               <td><?= $product->getDescription() ?></td>
               <td><?= $product->getPriceFormatted() ?></td>
-              <td><a class="botao-editar" href="editar-produto.html">Editar</a></td>
+              <td><a class="botao-editar" href="edit-product.php?id=<?= $product->getId() ?>">Editar</a></td>
               <td>
                 <form action="delete-product.php" method="POST">
                   <input type="hidden" name="id" value="<?= $product->getId() ?>">
