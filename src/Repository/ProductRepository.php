@@ -113,5 +113,20 @@ class ProductRepository
         $statement->bindValue(5, $product->getImage());
         $statement->bindValue(6, $product->getId());
         $statement->execute();
+
+        if ($product->getImage() !== 'logo-serenatto.png') {
+
+            $this->updateImage($product);
+        }
+    }
+
+    private function updateImage(Product $produto)
+    {
+        $sql = "UPDATE produtos SET imagem = ? WHERE id = ?";
+
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(1, $produto->getImage());
+        $statement->bindValue(2, $produto->getId());
+        $statement->execute();
     }
 }

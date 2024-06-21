@@ -66,8 +66,8 @@ $products = $productRepository->getAll();
         </tbody>
       </table>
       <a class="botao-cadastrar" href="add-product.php">Cadastrar produto</a>
-      <form action="#" method="post">
-        <input type="submit" class="botao-cadastrar" value="Baixar Relatório" />
+      <form action="generate-pdf.php" method="post">
+        <input type="submit" class="botao-cadastrar" value=" Baixar Relatório" />
       </form>
     </section>
   </main>

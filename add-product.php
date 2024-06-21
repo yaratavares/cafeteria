@@ -6,6 +6,13 @@ require "src/Repository/ProductRepository.php";
 if (isset($_POST['cadastro'])) {
     $product = new Product(null, $_POST['tipo'], $_POST['nome'], $_POST['descricao'], floatval($_POST['preco']));
     $productRepository = new ProductRepository($pdo);
+
+    if ($_FILES['imagem']['error'] == UPLOAD_ERR_OK) {
+        $product->setImage(uniqid() . $_FILES['imagem']['name']);
+
+        move_uploaded_file($_FILES['imagem']['tmp_name'], $product->getImageDiretory());
+    }
+
     $productRepository->saveProduct($product);
 
     header("Location: admin.php");

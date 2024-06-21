@@ -7,8 +7,15 @@ $productRepository = new ProductRepository($pdo);
 
 if (isset($_POST['editar'])) {
   $product = new Product($_POST['id'], $_POST['tipo'], $_POST['nome'], $_POST['descricao'], floatval($_POST['preco']));
-  $productRepository->update($product);
 
+
+  if ($_FILES['imagem']['error'] == UPLOAD_ERR_OK) {
+    $product->setImage(uniqid() . $_FILES['imagem']['name']);
+
+    move_uploaded_file($_FILES['imagem']['tmp_name'], $product->getImageDiretory());
+  }
+
+  $productRepository->update($product);
   header("Location: admin.php");
 } else {
   $product = $productRepository->findOne($_GET['id']);
@@ -43,7 +50,7 @@ if (isset($_POST['editar'])) {
       <img class="ornaments" src="img/ornaments-coffee.png" alt="ornaments">
     </section>
     <section class="container-form">
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
 
         <label for="nome">Nome</label>
         <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto" value="<?= $product->getName() ?>" required>
